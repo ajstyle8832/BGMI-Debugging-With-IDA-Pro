@@ -18,29 +18,29 @@ ID Script for Making it Undetectable
 
 To make the debugging process undetectable, you can use the following ID script:
 
-python
+Python code:
 
 import idautils
 
 import idc
 
 
-# Set the name of the game process here
+-- Set the name of the game process here
 
 game_process = "com.pubg.imobile"
 
 
-# Set the name of the function you want to debug here
+-- Set the name of the function you want to debug here
 
 function_name = "main"
 
 
-# Start the remote debugger
+-- Start the remote debugger
 
 idc.StartDebugServer(23946, "localhost")
 
 
-# Wait for the game process to start
+-- Wait for the game process to start
 
 while True:
 
@@ -51,22 +51,22 @@ while True:
         break
 
 
-# Attach to the game process
+-- Attach to the game process
 
 idc.AttachProcess(processes.index(game_process))
 
 
-# Find the address of the function you want to debug
+-- Find the address of the function you want to debug
 
 func_addr = idc.GetFunctionAddress(function_name)
 
 
-# Set a breakpoint at the function
+-- Set a breakpoint at the function
 
 idc.AddBpt(func_addr)
 
 
-# Wait for the breakpoint to be hit
+-- Wait for the breakpoint to be hit
 
 while True:
 
@@ -77,15 +77,15 @@ while True:
         break
 
 
-# Inspect memory, step through the code, etc.
+-- Inspect memory, step through the code, etc.
 
 
-# Detach from the game process
+-- Detach from the game process
 
 idc.DetachProcess()
 
 
-# Stop the remote debugger
+-- Stop the remote debugger
 
 idc.StopDebugServer()
 
